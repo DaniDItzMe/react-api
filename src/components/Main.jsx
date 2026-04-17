@@ -1,21 +1,36 @@
-import Card from "./Card"
-export default function Main({actors, actresses}){
-
-    return (
-
-        <main className="container">
-            <div className="cards-container row">
-                <div className="col-auto">
-
-                    <Card name={actors[0]?.name} image={actors[0]?.image} nationality={actors[0]?.nationality} dateOfBirth={actors[0]?.birth_year} bio={actors[0]?.biography} awards={actors[0]?.awards}></Card>
-                </div>
-                <div className="col-auto">
-
-                    <Card name={actresses[0]?.name} image={actresses[0]?.image} nationality={actresses[0]?.nationality} dateOfBirth={actresses[0]?.birth_year} bio={actresses[0]?.biography} awards={actresses[0]?.awards}></Card>
-                </div>
-            </div>
-        </main>
-
-    )
-
+import Card from "./Card";
+export default function Main({ actors, actresses }) {
+  return (
+    <main className="container my-5">
+      <h2 className="text-center mb-3">Entire cast</h2>
+      <div className="cards-container row g-5">
+        {actors.map((actor) => (
+          <div key={actor.id} className="col-auto">
+            <Card
+              name={actor.name}
+              image={actor.image}
+              nationality={actor.nationality}
+              dateOfBirth={actor.birth_year}
+              bio={actor.biography}
+              awards={actor.awards}
+              knownFor={actor.known_for}
+            ></Card>
+          </div>
+        ))}
+        {actresses.map((actress) => (
+          <div key={actress.id} className="col-auto">
+            <Card
+              name={actress.name}
+              image={actress.image}
+              nationality={actress.nationality}
+              dateOfBirth={actress.birth_year}
+              bio={actress.biography}
+              awards={actress.awards}
+              knownFor={actress.most_famous_movies}
+            ></Card>
+          </div>
+        ))}
+      </div>
+    </main>
+  );
 }

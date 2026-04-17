@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Main from "./components/Main";
-
+import Header from "./components/Header";
 
 
 function App() {
@@ -38,14 +38,7 @@ function App() {
 
   return (
     <>
-      <nav className="navbar bg-body-tertiary">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Attori
-          </a>
-        </div>
-      </nav>
-
+      <Header></Header>
       <Main actors={actors} actresses={actresses}></Main>
     </>
   );
