@@ -1,33 +1,54 @@
-import axios from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react'
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Main from "./components/Main";
+
 
 
 function App() {
-
   const [actors, setActors] = useState([]);
   const [actresses, setActresses] = useState([]);
 
-  useEffect(()=> {
+  useEffect(() => {
+    axios
+      .get("https://lanciweb.github.io/demo/api/actresses/")
+      .then((res) => {
+        setActresses(res.data);
+        console.log(res.data);
+      })
+      .catch((error) =>
+        console.log(
+          "Caricamento delle attrici fallito, codice errore: " + error.message,
+        ),
+      );
 
-    axios.get("https://lanciweb.github.io/demo/api/actresses/")
-    .then(res => {setActresses(res.data); console.log(res.data);
-    })
-    .catch(error => console.log("Caricamento delle attrici fallito, codice errore: " + error.message))
-
-    axios.get("https://lanciweb.github.io/demo/api/actors")
-    .then(res => {setActors(res.data); console.log(res.data);
-    })
-    .catch(error => console.log("Caricamento degli attori fallito, codice errore: " + error.message))
-    
-
-  }, [])
+    axios
+      .get("https://lanciweb.github.io/demo/api/actors")
+      .then((res) => {
+        setActors(res.data);
+        console.log(res.data);
+      })
+      .catch((error) =>
+        console.log(
+          "Caricamento degli attori fallito, codice errore: " + error.message,
+        ),
+      );
+  }, []);
 
   return (
     <>
-      
+      <nav className="navbar bg-body-tertiary">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            Attori
+          </a>
+        </div>
+      </nav>
+
+      <Main actors={actors} actresses={actresses}></Main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
