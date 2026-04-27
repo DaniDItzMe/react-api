@@ -5,7 +5,7 @@ export default function Main({ actors, actresses }) {
       <h2 className="mb-3">Attori</h2>
       <div className="cards-container row g-5">
         {actors.map((actor) => (
-          <div key={actor.id} className="col-auto">
+          <div key={actor.id} className="col-auto d-flex">
             <Card
               name={actor.name}
               image={actor.image}
@@ -21,7 +21,7 @@ export default function Main({ actors, actresses }) {
       <div className="cards-container row g-5 mb-3">
         <h2 className="">Attrici</h2>
         {actresses.map((actress) => (
-          <div key={actress.id} className="col-auto">
+          <div key={actress.id} className="col-auto d-flex">
             <Card
               name={actress.name}
               image={actress.image}
@@ -37,7 +37,7 @@ export default function Main({ actors, actresses }) {
       <div className="cards-container row g-5">
         <h2 className="">Tutto il cast</h2>
         {actors.map((actor) => (
-          <div key={actor.id} className="col-auto">
+          <div key={actor.id} className="col-auto d-flex">
             <Card
               name={actor.name}
               image={actor.image}
@@ -50,7 +50,7 @@ export default function Main({ actors, actresses }) {
           </div>
         ))}
         {actresses.map((actress) => (
-          <div key={actress.id} className="col-auto">
+          <div key={actress.id} className="col-auto d-flex">
             <Card
               name={actress.name}
               image={actress.image}
